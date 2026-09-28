@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en" class="is-loading">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#03070d">
+<meta name="description" content="BCF SHAMIM — Web Developer & Digital Experience Designer">
+<title>BCF SHAMIM — Web Developer</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#02050a;--panel:#07111d;--text:#f6f9fc;--muted:#8293a6;
+  --cyan:#00e5ff;--blue:#3275ff;--line:rgba(255,255,255,.085);
+  --max:1240px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  color:var(--text);font-family:Inter,Arial,sans-serif;background:
+  radial-gradient(circle at 80% 0%,rgba(0,210,255,.13),transparent 27%),
+  radial-gradient(circle at 8% 28%,rgba(45,93,255,.10),transparent 30%),
+  linear-gradient(180deg,#02050a,#030911 55%,#02050a);
+  overflow-x:hidden;
+}
+body:before{
+  content:"";position:fixed;inset:0;z-index:-3;opacity:.32;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+  background-size:54px 54px;
+  mask-image:linear-gradient(to bottom,black,transparent 90%);
+}
+a{text-decoration:none;color:inherit}
+.container{width:min(var(--max),92%);margin:auto}
+header{position:fixed;top:0;left:0;right:0;z-index:100;border-bottom:1px solid var(--line);
+background:rgba(2,5,10,.62);backdrop-filter:blur(24px)}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between}
+.logo{font:700 1.05rem "Space Grotesk";letter-spacing:.12em}
+.logo span{color:var(--cyan)}
+.navlinks{display:flex;gap:28px;list-style:none;color:#8ea0b2;font-size:.74rem;font-weight:700}
+.navlinks a{transition:.2s}.navlinks a:hover{color:#fff}
+.navcta{padding:10px 15px;border:1px solid rgba(0,229,255,.24);border-radius:100px;font-size:.7rem;font-weight:800}
+.menu{display:none;background:none;border:0;color:#fff;font-size:25px}
+
+.hero{min-height:100vh;padding:120px 0 70px;display:grid;align-items:center}
+.heroGrid{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;padding:8px 12px;border:1px solid rgba(0,229,255,.20);
+border-radius:100px;background:rgba(0,229,255,.04);font-size:.61rem;letter-spacing:.16em;text-transform:uppercase;color:#a4dce5;font-weight:800}
+.dot{width:6px;height:6px;background:var(--cyan);border-radius:50%;box-shadow:0 0 16px var(--cyan)}
+h1{font:700 clamp(3.8rem,7.2vw,7.3rem)/.84 "Space Grotesk";letter-spacing:-.085em;margin:25px 0}
+.grad{background:linear-gradient(100deg,#fff,#87f5ff 45%,#357dff);background-clip:text;-webkit-background-clip:text;color:transparent}
+.lead{max-width:620px;color:var(--muted);font-size:.94rem;line-height:1.9}
+.lead strong{color:#e5f0f7}
+.actions{display:flex;gap:11px;flex-wrap:wrap;margin:29px 0}
+.btn{padding:14px 19px;border-radius:13px;font-size:.74rem;font-weight:800;transition:.25s;display:inline-flex;align-items:center;justify-content:center}
+.primary{background:linear-gradient(130deg,#13e5f3,#246cff);box-shadow:0 18px 55px rgba(0,92,255,.23)}
+.primary:hover{transform:translateY(-4px);box-shadow:0 25px 70px rgba(0,100,255,.34)}
+.secondary{border:1px solid var(--line);background:rgba(255,255,255,.025)}
+.secondary:hover{transform:translateY(-4px);border-color:rgba(0,229,255,.28)}
+.heroMeta{display:flex;gap:32px;flex-wrap:wrap}.heroMeta b{font:700 1.12rem "Space Grotesk";display:block}.heroMeta span{color:#63768a;font-size:.62rem}
+
+/* 3D STAGE */
+.stage{height:600px;display:grid;place-items:center;perspective:1500px}
+.scene{width:535px;height:535px;position:relative;transform-style:preserve-3d}
+.glow{position:absolute;inset:9%;border-radius:50%;background:radial-gradient(circle,rgba(0,188,255,.35),transparent 63%);filter:blur(30px);transform:translateZ(-160px)}
+.ring{position:absolute;border-radius:50%;border:1px solid rgba(0,229,255,.20);transform-style:preserve-3d}
+.r1{inset:8%;transform:rotateX(69deg) rotateY(9deg);animation:r1 18s linear infinite}
+.r2{inset:17%;border-color:rgba(50,117,255,.25);transform:rotateX(65deg) rotateY(-14deg);animation:r2 24s linear infinite}
+.r3{inset:28%;border-color:rgba(255,255,255,.09);transform:rotateY(72deg);animation:r3 28s linear infinite}
+.r4{inset:36%;border-color:rgba(0,229,255,.12);transform:rotateX(72deg) rotateZ(23deg);animation:r4 20s linear infinite}
+@keyframes r1{to{transform:rotateX(69deg) rotateY(9deg) rotateZ(360deg)}}
+@keyframes r2{to{transform:rotateX(65deg) rotateY(-14deg) rotateZ(-360deg)}}
+@keyframes r3{to{transform:rotateY(72deg) rotateZ(360deg)}}
+@keyframes r4{to{transform:rotateX(72deg) rotateZ(-337deg)}}
+.node{position:absolute;width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 25px 5px rgba(0,229,255,.45)}
+.n1{top:12%;left:27%}.n2{right:12%;top:43%;background:#5c91ff}.n3{bottom:15%;left:21%}.n4{right:24%;bottom:13%}
+.card{
+ position:absolute;inset:10% 9%;border-radius:35px;overflow:visible;
+ background:linear-gradient(145deg,rgba(11,30,49,.88),rgba(2,7,14,.94));
+ border:1px solid rgba(0,229,255,.25);
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.11),0 60px 120px rgba(0,69,160,.28);
+ transform-style:preserve-3d;transition:transform .16s ease;
+}
+.card:before{content:"";position:absolute;inset:12px;border-radius:27px;border:1px solid rgba(255,255,255,.055);transform:translateZ(17px)}
+.card:after{content:"";position:absolute;left:12%;right:12%;bottom:-38px;height:55px;border-radius:50%;background:rgba(0,115,255,.35);filter:blur(28px);z-index:-1}
+.profile{position:absolute;left:-7%;bottom:-1%;width:114%;z-index:5;transform:translateZ(55px);filter:drop-shadow(0 30px 32px rgba(0,0,0,.78))}
+.cardLabel{position:absolute;top:25px;left:26px;z-index:8;transform:translateZ(85px);font:600 .59rem "Space Grotesk";letter-spacing:.17em;color:#7690a8}
+.scan{position:absolute;left:8%;right:8%;top:20%;height:1px;z-index:8;background:linear-gradient(90deg,transparent,#00e5ff,transparent);opacity:.65;animation:scan 4.8s ease-in-out infinite}
+@keyframes scan{50%{top:79%}}
+.float{position:absolute;z-index:15;padding:12px 14px;border:1px solid rgba(255,255,255,.1);border-radius:13px;
+background:rgba(3,10,18,.84);backdrop-filter:blur(16px);box-shadow:0 18px 50px rgba(0,0,0,.45);font-size:.61rem;transform:translateZ(120px)}
+.float b{display:block;color:var(--cyan);font-size:.54rem;letter-spacing:.12em;margin-bottom:4px}
+.fa{top:15%;left:-8%}.fb{right:-6%;bottom:20%}.fc{left:7%;bottom:1%}
+
+.marquee{border-block:1px solid var(--line);padding:17px 0;overflow:hidden;white-space:nowrap}
+.track{display:inline-flex;gap:35px;font:600 .63rem "Space Grotesk";letter-spacing:.17em;color:#63768a;animation:move 25s linear infinite}
+.track i{font-style:normal;color:var(--cyan)}@keyframes move{to{transform:translateX(-50%)}}
+
+section{padding:105px 0}.label{color:var(--cyan);font-size:.61rem;font-weight:900;letter-spacing:.19em}
+.title{font:700 clamp(2.25rem,4.5vw,4rem)/.98 "Space Grotesk";letter-spacing:-.065em;margin:10px 0 14px}
+.desc{max-width:710px;color:var(--muted);font-size:.88rem;line-height:1.85}
+.head{margin-bottom:40px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:20px;overflow:hidden;background:rgba(255,255,255,.018)}
+.stat{padding:27px;border-right:1px solid var(--line)}.stat:last-child{border:0}.stat b{font:700 1.55rem "Space Grotesk";display:block}.stat span{font-size:.66rem;color:#6f8295}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.service{min-height:205px;padding:26px;border:1px solid var(--line);border-radius:21px;background:linear-gradient(145deg,rgba(10,25,41,.72),rgba(3,9,16,.88));position:relative;overflow:hidden;transition:.3s;transform-style:preserve-3d}
+.service:after{content:"";position:absolute;width:170px;height:170px;right:-100px;top:-100px;border-radius:50%;background:rgba(0,229,255,.05)}
+.service:hover{transform:translateY(-8px) rotateX(3deg);border-color:rgba(0,229,255,.27);box-shadow:0 28px 70px rgba(0,75,180,.13)}
+.icon{width:46px;height:46px;display:grid;place-items:center;border-radius:13px;color:var(--cyan);border:1px solid rgba(0,229,255,.18);background:rgba(0,229,255,.04);font:700 .8rem "Space Grotesk";margin-bottom:19px}
+.service h3{font:600 1rem "Space Grotesk";margin-bottom:8px}.service p{font-size:.77rem;line-height:1.75;color:#7d90a4}
+
+.about{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center}
+.terminal{border:1px solid rgba(0,229,255,.15);border-radius:20px;overflow:hidden;background:#02070d;box-shadow:0 35px 90px rgba(0,65,150,.12)}
+.termbar{height:43px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:7px;padding:0 15px}.termbar i{width:8px;height:8px;border-radius:50%;background:#405063}
+.code{padding:25px;font:12px/2.05 ui-monospace,Menlo,monospace;color:#8195aa}.c1{color:#76b8ff}.c2{color:#18e5f4}.c3{color:#fff}
+.skills{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:22px}.skill{padding:12px;border:1px solid var(--line);border-radius:11px;background:rgba(255,255,255,.018);font-size:.72rem;color:#b3c1ce}
+
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.step{padding:24px;border:1px solid var(--line);border-radius:19px;background:rgba(255,255,255,.017)}
+.num{font:700 .59rem "Space Grotesk";letter-spacing:.13em;color:var(--cyan)}.step h3{font:600 1rem "Space Grotesk";margin:14px 0 8px}.step p{font-size:.76rem;line-height:1.72;color:#7c8fa4}
+
+.work{display:grid;grid-template-columns:1.2fr .8fr;gap:15px}.project{min-height:315px;border:1px solid var(--line);border-radius:23px;padding:28px;display:flex;flex-direction:column;justify-content:end;overflow:hidden;position:relative;background:#07111c;transition:.3s}
+.project:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 10%,rgba(0,220,255,.17),transparent 30%),linear-gradient(135deg,rgba(0,229,255,.07),transparent 45%,rgba(48,105,255,.09));pointer-events:none}
+.project:hover{transform:translateY(-6px);border-color:rgba(0,229,255,.25)}
+.tag{width:max-content;padding:6px 10px;border:1px solid rgba(0,229,255,.21);border-radius:100px;color:#79eaf5;font-size:.53rem;font-weight:800;letter-spacing:.12em;position:relative}
+.project h3{font:600 1.4rem "Space Grotesk";margin:11px 0 8px;position:relative}.project p{color:#7c90a4;font-size:.77rem;line-height:1.7;position:relative}
+
+.contact{border:1px solid rgba(0,229,255,.18);border-radius:30px;padding:80px 22px;text-align:center;background:radial-gradient(circle at 50% 0,rgba(0,229,255,.12),transparent 58%),rgba(6,14,24,.66);box-shadow:0 30px 90px rgba(0,70,180,.1)}
+.contact .desc{margin:auto}.contact .actions{justify-content:center}
+footer{border-top:1px solid var(--line);padding:26px 0;color:#62758a;font-size:.67rem}footer .container{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.reveal{opacity:0;transform:translateY(25px);transition:opacity .8s ease,transform .8s ease}.reveal.show{opacity:1;transform:none}
+
+@media(max-width:950px){
+ .navlinks{display:none}.menu{display:block}.navcta{display:none}
+ .heroGrid,.about{grid-template-columns:1fr}.hero{text-align:center}.lead{margin:auto}.actions,.heroMeta{justify-content:center}
+ .stage{height:550px}.cards{grid-template-columns:1fr 1fr}.timeline{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:0}.stat{border-bottom:1px solid var(--line)}
+ .work{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+ h1{font-size:3.55rem}.stage{height:450px}.scene{width:405px;height:405px}
+ .fa{left:-2%}.fb{right:-2%}.float{font-size:.55rem}.cards,.timeline,.skills{grid-template-columns:1fr}
+ .stats{grid-template-columns:1fr}.stat{border-right:0}.stat:last-child{border-bottom:0}
+ section{padding:78px 0}
+}
+
+/* Advanced detail sections */
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.detail-panel{border:1px solid var(--line);border-radius:23px;background:linear-gradient(145deg,rgba(9,24,40,.8),rgba(2,8,14,.94));padding:28px;overflow:hidden;position:relative}
+.detail-panel:before{content:"";position:absolute;width:240px;height:240px;right:-150px;top:-150px;border-radius:50%;background:rgba(0,229,255,.08);filter:blur(8px)}
+.panel-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:22px}
+.panel-kicker{font-size:.57rem;letter-spacing:.17em;color:var(--cyan);font-weight:900}
+.panel-title{font:600 1.25rem "Space Grotesk";margin-top:7px}
+.live{font-size:.54rem;color:#9eeaf0;border:1px solid rgba(0,229,255,.2);border-radius:100px;padding:7px 9px}.live:before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:#31e7b0;margin-right:6px}
+.progress-row{margin:17px 0}.progress-label{display:flex;justify-content:space-between;color:#92a3b5;font-size:.66rem;margin-bottom:8px}.progress-label b{color:#dce7ee}.bar{height:5px;background:#101c29;border-radius:10px;overflow:hidden}.bar i{display:block;height:100%;width:var(--w);background:linear-gradient(90deg,var(--cyan),#3a74ff);border-radius:inherit}
+.tech-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.tech{padding:13px 8px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.018);font-size:.62rem;color:#8fa2b5;text-align:center}.tech strong{display:block;color:#eef6fa;font-size:.71rem;margin-bottom:4px}
+.feature-list{display:grid;gap:10px}.feature{display:flex;gap:11px;padding:13px;border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.015)}.feature-mark{width:23px;height:23px;border-radius:7px;border:1px solid rgba(0,229,255,.2);color:var(--cyan);display:grid;place-items:center;font-size:.53rem;flex:0 0 auto}.feature p{font-size:.69rem;color:#8194a7;line-height:1.65}.feature p strong{color:#dce7ef}
+.quote{margin-top:17px;padding:20px;border-left:2px solid var(--cyan);background:rgba(0,229,255,.025);border-radius:0 14px 14px 0;color:#9aaabd;font-size:.75rem;line-height:1.8}
+.metric-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.metric{padding:22px;border:1px solid var(--line);border-radius:17px;background:rgba(255,255,255,.018)}.metric b{display:block;font:700 1.55rem "Space Grotesk"}.metric span{font-size:.62rem;color:#73869a}
+.faq{display:grid;gap:10px}.faq details{border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.018);padding:0 17px}.faq summary{cursor:pointer;list-style:none;padding:17px 2px;font:600 .78rem "Space Grotesk"}.faq summary::-webkit-details-marker{display:none}.faq summary:after{content:"+";float:right;color:var(--cyan);font-size:1rem}.faq details[open] summary:after{content:"−"}.faq p{color:#7f91a3;font-size:.71rem;line-height:1.75;padding:0 2px 17px}
+.contact-meta{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-top:24px}.contact-chip{border:1px solid var(--line);border-radius:100px;padding:9px 12px;color:#8093a6;font-size:.58rem;background:rgba(255,255,255,.02)}.signature{font:600 .67rem "Space Grotesk";letter-spacing:.12em;color:#5f7285;margin-top:25px}
+@media(max-width:900px){.detail-grid{grid-template-columns:1fr}.metric-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.tech-grid,.metric-grid{grid-template-columns:1fr 1fr}}
+
+
+/* ===== PREMIUM 5-SECOND LOADING EXPERIENCE ===== */
+html.is-loading, html.is-loading body{overflow:hidden!important}
+#site-loader{
+  position:fixed;inset:0;z-index:99999;display:grid;place-items:center;
+  background:
+    radial-gradient(circle at 50% 42%,rgba(0,229,255,.10),transparent 25%),
+    radial-gradient(circle at 50% 50%,rgba(50,117,255,.07),transparent 48%),
+    #02050a;
+  opacity:1;visibility:visible;pointer-events:auto;
+  transition:opacity .8s cubic-bezier(.22,1,.36,1),visibility .8s;
+}
+#site-loader.done{opacity:0;visibility:hidden;pointer-events:none}
+.loader-grid{
+  position:absolute;inset:0;opacity:.22;
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:54px 54px;
+  mask-image:radial-gradient(circle at center,#000 0%,transparent 72%);
+}
+.loader-core{position:relative;width:min(520px,86vw);text-align:center}
+.loader-orbit{
+  width:126px;height:126px;margin:0 auto 28px;position:relative;
+  display:grid;place-items:center;border:1px solid rgba(0,229,255,.16);
+  border-radius:50%;box-shadow:0 0 70px rgba(0,174,255,.10),inset 0 0 35px rgba(0,229,255,.04);
+}
+.loader-orbit:before,.loader-orbit:after{
+  content:"";position:absolute;border-radius:50%;border:1px solid rgba(0,229,255,.35);
+}
+.loader-orbit:before{inset:12px;animation:loaderSpin 3s linear infinite}
+.loader-orbit:after{inset:27px;border-color:rgba(50,117,255,.4);animation:loaderSpin 2s linear infinite reverse}
+.loader-dot{
+  width:12px;height:12px;border-radius:50%;background:var(--cyan);
+  box-shadow:0 0 28px 7px rgba(0,229,255,.38);
+  animation:loaderPulse 1.5s ease-in-out infinite;
+}
+.loader-brand{font:700 clamp(1.4rem,4vw,2rem) "Space Grotesk";letter-spacing:.18em}
+.loader-brand span{color:var(--cyan)}
+.loader-status{margin-top:9px;color:#71879b;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;min-height:18px}
+.loader-progress-wrap{
+  width:100%;height:3px;margin-top:25px;border-radius:20px;overflow:hidden;background:rgba(255,255,255,.07)
+}
+#loader-progress{
+  display:block;width:0;height:100%;border-radius:inherit;
+  background:linear-gradient(90deg,var(--cyan),#3275ff);
+  box-shadow:0 0 18px rgba(0,229,255,.55);
+  transition:width .12s linear;
+}
+.loader-bottom{display:flex;justify-content:space-between;margin-top:10px;color:#52677a;font-size:.52rem;letter-spacing:.13em}
+#loader-percent{color:#9edee7;font-weight:800}
+.loader-corner{position:absolute;color:rgba(126,151,171,.45);font:500 .48rem ui-monospace,monospace;letter-spacing:.12em}
+.loader-corner.tl{top:28px;left:28px}.loader-corner.br{right:28px;bottom:28px}
+@keyframes loaderSpin{to{transform:rotate(360deg)}}
+@keyframes loaderPulse{50%{transform:scale(1.25);opacity:.72}}
+@media(prefers-reduced-motion:reduce){
+  .loader-orbit:before,.loader-orbit:after,.loader-dot{animation:none}
+  #site-loader{transition:none}
+}
+
+
+/* ===== PREMIUM UX ENHANCEMENT LAYER ===== */
+body{background:
+ radial-gradient(circle at 12% 18%,rgba(0,229,255,.055),transparent 26%),
+ radial-gradient(circle at 88% 72%,rgba(50,117,255,.055),transparent 30%),
+ var(--bg);}
+body.site-ready{animation:siteReveal .7s ease both}
+@keyframes siteReveal{from{opacity:.72;filter:blur(3px)}to{opacity:1;filter:none}}
+
+#scroll-progress{position:fixed;top:0;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--cyan),var(--blue),#fff);z-index:10001;box-shadow:0 0 14px rgba(0,229,255,.7);pointer-events:none}
+#back-top{position:fixed;right:22px;bottom:22px;width:44px;height:44px;border:1px solid rgba(0,229,255,.28);border-radius:50%;background:rgba(4,10,18,.72);backdrop-filter:blur(14px);color:#fff;display:grid;place-items:center;z-index:9990;opacity:0;transform:translateY(14px) scale(.9);pointer-events:none;transition:.35s ease;box-shadow:0 10px 35px rgba(0,0,0,.35)}
+#back-top.show{opacity:1;transform:none;pointer-events:auto}
+#back-top:hover{border-color:var(--cyan);box-shadow:0 0 28px rgba(0,229,255,.18);transform:translateY(-3px)}
+
+.reveal{will-change:transform,opacity}
+a,.btn,button{transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease,background .28s ease}
+.btn:hover,.service-card:hover,.work-card:hover,.stat:hover{transform:translateY(-5px)}
+.btn:active{transform:translateY(-1px) scale(.98)}
+
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:
+ linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+ linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+ background-size:70px 70px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.75),transparent 85%);opacity:.5}
+
+#site-noise{position:fixed;inset:-50%;width:200%;height:200%;pointer-events:none;z-index:9998;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");animation:noiseMove .18s steps(2) infinite}
+@keyframes noiseMove{0%{transform:translate(0,0)}25%{transform:translate(-2%,1%)}50%{transform:translate(1%,-2%)}75%{transform:translate(2%,2%)}100%{transform:translate(-1%,-1%)}}
+
+.loader-core{position:relative;z-index:2}
+.loader-orbit{box-shadow:0 0 80px rgba(0,229,255,.13),inset 0 0 40px rgba(50,117,255,.08)}
+.loader-brand{letter-spacing:.3em;text-shadow:0 0 28px rgba(0,229,255,.3)}
+.loader-status{min-height:20px;transition:opacity .18s ease}
+.loader-progress-wrap{position:relative;overflow:hidden}
+.loader-progress-wrap::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);transform:translateX(-100%);animation:loaderSheen 1.15s linear infinite}
+@keyframes loaderSheen{to{transform:translateX(100%)}}
+#loader-progress{box-shadow:0 0 18px rgba(0,229,255,.65)}
+.loader-system-line{position:absolute;left:50%;bottom:-58px;transform:translateX(-50%);font:600 9px/1 Inter,sans-serif;letter-spacing:.25em;color:rgba(180,220,235,.42);white-space:nowrap}
+
+@media(max-width:700px){
+ #back-top{right:14px;bottom:14px;width:40px;height:40px}
+ #site-noise{opacity:.018}
+}
+@media(prefers-reduced-motion:reduce){
+ #site-noise{animation:none}
+ body.site-ready{animation:none}
+ .btn:hover,.service-card:hover,.work-card:hover,.stat:hover{transform:none}
+}
+
+
+/* ===== RESPONSIVE SCALE + PERFORMANCE PATCH ===== */
+:root{--max:1440px}
+body{font-size:16px}
+.container{width:min(var(--max),94%);padding-inline:8px}
+.nav{height:82px}
+.navlinks{font-size:.78rem;gap:34px}
+.navcta{font-size:.74rem;padding:11px 17px}
+.hero{min-height:100svh;padding:132px 0 82px}
+.heroGrid{grid-template-columns:minmax(0,1.02fr) minmax(520px,.98fr);gap:55px}
+h1{font-size:clamp(4.4rem,7.8vw,8.6rem)}
+.lead{max-width:700px;font-size:1rem;line-height:1.9}
+.stage{height:680px}
+.scene{width:610px;height:610px}
+.card{inset:9% 7%}
+.profile{width:116%;left:-8%}
+.float{font-size:.68rem;padding:14px 16px}
+.float b{font-size:.58rem}
+section{padding:125px 0}
+.title{font-size:clamp(2.6rem,4.8vw,4.5rem)}
+.desc{font-size:.96rem}
+.service{min-height:235px;padding:30px}
+.service h3{font-size:1.08rem}
+.service p{font-size:.82rem}
+.stat{padding:31px}
+.stat b{font-size:1.7rem}
+.code{font-size:13px}
+.project{min-height:360px;padding:32px}
+.contact{padding:95px 30px}
+
+@media(max-width:1100px){
+  .heroGrid{grid-template-columns:1fr;gap:15px}
+  .hero{text-align:center}
+  .lead{margin:auto}
+  .actions,.heroMeta{justify-content:center}
+  .stage{height:600px}
+  .scene{width:550px;height:550px}
+}
+@media(max-width:700px){
+  .container{width:min(94%,620px);padding-inline:4px}
+  .nav{height:70px}
+  .hero{padding:105px 0 45px}
+  h1{font-size:clamp(3.15rem,15vw,4.7rem);letter-spacing:-.075em}
+  .lead{font-size:.88rem}
+  .heroMeta{gap:20px}
+  .stage{height:410px;margin-top:8px}
+  .scene{width:355px;height:355px}
+  .card{border-radius:26px}
+  .cardLabel{top:18px;left:19px;font-size:.5rem}
+  .float{padding:9px 10px;font-size:.5rem}
+  .fa{left:-1%;top:12%}.fb{right:-1%;bottom:20%}.fc{bottom:0}
+  section{padding:82px 0}
+  .title{font-size:clamp(2.15rem,10vw,3.2rem)}
+  .desc{font-size:.84rem}
+  .service{min-height:190px;padding:23px}
+  .project{min-height:285px;padding:24px}
+  .contact{padding:68px 18px}
+}
+@media(prefers-reduced-motion:reduce){
+  .ring,.scan,.track{animation:none!important}
+  .profile{filter:none}
+}
+
+
+@media(max-width:700px){
+  .card:after,.glow{filter:none;opacity:.65}
+  .loader-grid{opacity:.12}
+}
+
+</style>
+</head>
+<body>
+<div id="scroll-progress" aria-hidden="true"></div>
+<div id="site-noise" aria-hidden="true"></div>
+<button id="back-top" type="button" aria-label="Back to top">↑</button>
+
+
+<div id="site-loader" aria-label="Loading website" aria-live="polite">
+  <div class="loader-grid"></div>
+  <div class="loader-corner tl">BCF / SYSTEM INITIALIZATION</div>
+  <div class="loader-corner br">DIGITAL EXPERIENCE / 2026</div>
+  <div class="loader-core">
+    <div class="loader-orbit"><span class="loader-dot"></span></div>
+    <div class="loader-brand">BCF <span>SHAMIM</span></div>
+    <div class="loader-status" id="loader-status">Initializing digital experience</div>
+    <div class="loader-progress-wrap"><span id="loader-progress"></span></div>
+    <div class="loader-bottom"><span>PLEASE WAIT</span><span id="loader-percent">0%</span></div>
+  </div>
+</div>
+
+
+<header>
+<div class="container nav">
+<a href="#home" class="logo">BCF <span>SHAMIM</span></a>
+<ul class="navlinks">
+<li><a href="#home">Home</a></li><li><a href="#services">Services</a></li><li><a href="#about">About</a></li><li><a href="#process">Process</a></li><li><a href="#work">Work</a></li><li><a href="#contact">Contact</a></li>
+</ul>
+<a href="#contact" class="navcta">Start a Project</a><button class="menu" aria-label="Menu">≡</button>
+</div>
+</header>
+
+<main id="home">
+<section class="hero">
+<div class="container heroGrid">
+<div class="reveal">
+<div class="eyebrow"><span class="dot"></span> Web Developer / Creative Technologist</div>
+<h1>BUILD.<br>CREATE.<br><span class="grad">EVOLVE.</span></h1>
+<p class="lead">I’m <strong>BCF SHAMIM</strong> — a Web Developer creating premium digital experiences through modern interface design, responsive development, clean architecture and purposeful motion.</p>
+<div class="actions"><a class="btn primary" href="#work">View Selected Work</a><a class="btn secondary" href="#contact">Discuss a Project</a></div>
+<div class="heroMeta"><div><b>WEB</b><span>Development</span></div><div><b>UI</b><span>Interface Systems</span></div><div><b>3D</b><span>Interaction</span></div><div><b>01</b><span>Creative Direction</span></div></div>
+</div>
+
+<div class="stage reveal" id="stage">
+<div class="scene">
+<div class="glow"></div><div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div><div class="ring r4"></div>
+<span class="node n1"></span><span class="node n2"></span><span class="node n3"></span><span class="node n4"></span>
+<div class="card" id="card">
+<div class="cardLabel">BCF / DIGITAL EXPERIENCE</div><div class="scan"></div>
+<img class="profile" alt="BCF SHAMIM — Web Developer" decoding="async" fetchpriority="high" src="profile.webp">
+</div>
+<div class="float fa"><b>PERFORMANCE</b>Fast and responsive</div>
+<div class="float fb"><b>DEVELOPMENT</b>Clean and scalable</div>
+<div class="float fc"><b>INTERACTION</b>Depth with purpose</div>
+</div>
+</div>
+</div>
+</section>
+
+<div class="marquee"><div class="track">
+<span>WEB DEVELOPMENT</span><i>•</i><span>UI SYSTEMS</span><i>•</i><span>3D INTERACTION</span><i>•</i><span>RESPONSIVE DESIGN</span><i>•</i><span>PERFORMANCE</span><i>•</i><span>CLEAN CODE</span><i>•</i>
+<span>WEB DEVELOPMENT</span><i>•</i><span>UI SYSTEMS</span><i>•</i><span>3D INTERACTION</span><i>•</i><span>RESPONSIVE DESIGN</span><i>•</i><span>PERFORMANCE</span><i>•</i><span>CLEAN CODE</span><i>•</i>
+</div></div>
+
+<section><div class="container"><div class="stats reveal">
+<div class="stat" data-tilt><b>Web</b><span>Development</span></div><div class="stat" data-tilt><b>UI / UX</b><span>Interface Systems</span></div><div class="stat" data-tilt><b>3D</b><span>Depth & Interaction</span></div><div class="stat" data-tilt><b>Code</b><span>Clean & Maintainable</span></div>
+</div></div></section>
+
+<section id="services"><div class="container">
+<div class="head reveal"><div class="label">01 / CAPABILITIES</div><h2 class="title">Digital products with<br><span class="grad">a sharper edge.</span></h2><p class="desc">A focused combination of visual design, front-end engineering, responsive systems and interactive details.</p></div>
+<div class="cards">
+<article class="service reveal"><div class="icon">&lt;/&gt;</div><h3>Web Development</h3><p>Responsive, structured and modern front-end experiences built for practical use.</p></article>
+<article class="service reveal"><div class="icon">01</div><h3>Interface Design</h3><p>Clear hierarchy, refined typography and consistent visual systems.</p></article>
+<article class="service reveal"><div class="icon">02</div><h3>3D Interaction</h3><p>Perspective, depth, layered surfaces and subtle motion with a clear purpose.</p></article>
+<article class="service reveal"><div class="icon">03</div><h3>Responsive Systems</h3><p>Layouts engineered to remain polished across phones, tablets and desktops.</p></article>
+<article class="service reveal"><div class="icon">04</div><h3>Performance</h3><p>Lightweight structure and thoughtful implementation for smooth experiences.</p></article>
+<article class="service reveal"><div class="icon">05</div><h3>Future Ready</h3><p>Organized foundations that can evolve as your brand and product grow.</p></article>
+</div>
+</div></section>
+
+<section id="about"><div class="container about">
+<div class="terminal reveal"><div class="termbar"><i></i><i></i><i></i></div><div class="code">
+<div><span class="c1">const</span> developer = {</div>
+<div>&nbsp;&nbsp;name: <span class="c2">"BCF SHAMIM"</span>,</div>
+<div>&nbsp;&nbsp;role: <span class="c2">"Web Developer"</span>,</div>
+<div>&nbsp;&nbsp;direction: <span class="c2">"Modern Digital"</span>,</div>
+<div>&nbsp;&nbsp;principles: [</div>
+<div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="c3">"Clarity"</span>,</div>
+<div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="c3">"Performance"</span>,</div>
+<div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="c3">"Consistency"</span>,</div>
+<div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="c3">"Craft"</span></div>
+<div>&nbsp;&nbsp;],</div>
+<div>&nbsp;&nbsp;status: <span class="c2">"Building"</span></div>
+<div>};</div>
+</div></div>
+<div class="reveal"><div class="label">02 / PROFILE</div><h2 class="title">Technology shaped by<br><span class="grad">creative thinking.</span></h2><p class="desc">The objective is to create websites that feel premium without sacrificing usability. Every section, transition and component is designed with intention.</p>
+<div class="skills"><div class="skill">Front-End Development</div><div class="skill">UI / UX Systems</div><div class="skill">Responsive Architecture</div><div class="skill">3D Visual Direction</div><div class="skill">Performance Focus</div><div class="skill">Continuous Learning</div></div></div>
+</div></section>
+
+<section id="process"><div class="container">
+<div class="head reveal"><div class="label">03 / PROCESS</div><h2 class="title">From concept to<br><span class="grad">digital experience.</span></h2><p class="desc">A clear workflow keeps creative direction, engineering and delivery aligned.</p></div>
+<div class="timeline">
+<article class="step reveal"><span class="num">01 — DISCOVER</span><h3>Define</h3><p>Clarify purpose, audience, content and visual direction before building.</p></article>
+<article class="step reveal"><span class="num">02 — DESIGN</span><h3>Shape</h3><p>Establish hierarchy, spacing, typography, surfaces and interactions.</p></article>
+<article class="step reveal"><span class="num">03 — DEVELOP</span><h3>Build</h3><p>Translate the system into responsive, maintainable and functional code.</p></article>
+<article class="step reveal"><span class="num">04 — REFINE</span><h3>Polish</h3><p>Review details, responsiveness and performance before release.</p></article>
+</div>
+</div></section>
+
+<section id="work"><div class="container">
+<div class="head reveal"><div class="label">04 / SELECTED WORK</div><h2 class="title">Built for brands that<br><span class="grad">want to stand apart.</span></h2><p class="desc">A premium showcase structure ready for real case studies, project links and client work.</p></div>
+<div class="work">
+<article class="project reveal"><span class="tag">PERSONAL BRAND</span><h3>Professional Portfolio</h3><p>A modern personal brand experience built around identity, credibility and selected work.</p></article>
+<article class="project reveal"><span class="tag">BUSINESS WEB</span><h3>Business Experience</h3><p>A focused landing system with strong hierarchy, clear communication and responsive behavior.</p></article>
+</div>
+</div></section>
+
+
+<section id="expertise"><div class="container">
+<div class="head reveal"><div class="label">06 / EXPERTISE</div><h2 class="title">Detail behind the<br><span class="grad">visual experience.</span></h2><p class="desc">Structure, responsiveness, interaction and maintainability are treated as one complete system.</p></div>
+<div class="detail-grid">
+<div class="detail-panel reveal"><div class="panel-top"><div><div class="panel-kicker">CORE STACK</div><div class="panel-title">Technical focus</div></div><div class="live">ACTIVE</div></div>
+<div class="progress-row"><div class="progress-label"><b>HTML / Structure</b><span>Advanced</span></div><div class="bar"><i style="--w:94%"></i></div></div>
+<div class="progress-row"><div class="progress-label"><b>CSS / Responsive UI</b><span>Advanced</span></div><div class="bar"><i style="--w:92%"></i></div></div>
+<div class="progress-row"><div class="progress-label"><b>JavaScript / Interaction</b><span>Focused</span></div><div class="bar"><i style="--w:84%"></i></div></div>
+<div class="progress-row"><div class="progress-label"><b>UI / Visual Systems</b><span>Focused</span></div><div class="bar"><i style="--w:89%"></i></div></div>
+<div class="tech-grid"><div class="tech"><strong>HTML5</strong>Structure</div><div class="tech"><strong>CSS3</strong>Visuals</div><div class="tech"><strong>JavaScript</strong>Motion</div><div class="tech"><strong>Responsive</strong>Layouts</div><div class="tech"><strong>3D UI</strong>Depth</div><div class="tech"><strong>UX</strong>Flow</div></div></div>
+<div class="detail-panel reveal"><div class="panel-top"><div><div class="panel-kicker">DESIGN PRINCIPLES</div><div class="panel-title">Built with intention</div></div></div>
+<div class="feature-list"><div class="feature"><div class="feature-mark">01</div><p><strong>Clarity first.</strong> Strong hierarchy keeps important information easy to scan.</p></div><div class="feature"><div class="feature-mark">02</div><p><strong>Motion with purpose.</strong> Animation adds depth and feedback without becoming distracting.</p></div><div class="feature"><div class="feature-mark">03</div><p><strong>Responsive by default.</strong> The visual language adapts across screen sizes.</p></div><div class="feature"><div class="feature-mark">04</div><p><strong>Clean foundations.</strong> Components remain organized for future changes.</p></div></div>
+<div class="quote">A professional interface should feel intentional before the visitor notices why it feels different.</div></div>
+</div></div></section>
+
+<section id="numbers"><div class="container"><div class="head reveal"><div class="label">07 / SYSTEM</div><h2 class="title">A complete digital<br><span class="grad">experience framework.</span></h2></div>
+<div class="metric-grid"><div class="metric reveal"><b>01</b><span>Single-page architecture</span></div><div class="metric reveal"><b>02</b><span>Responsive layout system</span></div><div class="metric reveal"><b>03</b><span>Interactive 3D presentation</span></div><div class="metric reveal"><b>04</b><span>Reusable visual components</span></div></div></div></section>
+
+<section id="faq"><div class="container"><div class="head reveal"><div class="label">08 / FAQ</div><h2 class="title">Common questions,<br><span class="grad">clearly answered.</span></h2></div>
+<div class="faq"><details class="reveal"><summary>Can this page be customized for a real business?</summary><p>Yes. The structure can be adapted for a personal brand, agency, business, product, service or portfolio while keeping the same visual system.</p></details><details class="reveal"><summary>Can social links and contact information be added?</summary><p>Yes. Email, social profiles, phone number and other links can be added to the existing contact area.</p></details><details class="reveal"><summary>Is the design responsive?</summary><p>Yes. It includes desktop, tablet and mobile breakpoints with a mobile navigation treatment.</p></details><details class="reveal"><summary>Can more projects be added?</summary><p>Yes. The work section uses reusable cards, so more case studies can be added to the same single-page experience.</p></details></div></div></section>
+
+<section id="contact"><div class="container"><div class="contact reveal">
+<div class="label">05 / CONTACT</div><h2 class="title">Let’s build something<br><span class="grad">remarkable.</span></h2><p class="desc">Have a portfolio, business website, personal brand or custom web idea? Start the conversation.</p>
+<div class="actions"><a class="btn primary" href="mailto:hello@example.com">Send a Message</a><a class="btn secondary" href="#home">Back to Top</a></div>
+<div class="contact-meta"><span class="contact-chip">Web Development</span><span class="contact-chip">UI Systems</span><span class="contact-chip">3D Interaction</span><span class="contact-chip">Responsive Design</span></div><div class="signature">BCF SHAMIM / WEB DEVELOPER</div>
+</div></div></section>
+</main>
+
+<footer><div class="container"><span>© 2026 BCF SHAMIM. All rights reserved.</span><span>CODE • CREATE • INNOVATE</span></div></footer>
+
+<script>
+/* ===== PREMIUM UX ENGINE ===== */
+const scrollProgress=document.getElementById("scroll-progress");
+const backTop=document.getElementById("back-top");
+const updateScrollUI=()=>{
+  const doc=document.documentElement;
+  const max=doc.scrollHeight-doc.clientHeight;
+  const ratio=max>0?doc.scrollTop/max:0;
+  if(scrollProgress) scrollProgress.style.width=(ratio*100)+"%";
+  if(backTop) backTop.classList.toggle("show",doc.scrollTop>650);
+};
+window.addEventListener("scroll",updateScrollUI,{passive:true});
+updateScrollUI();
+backTop?.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
+
+/* Smooth anchor navigation with fixed-header offset */
+document.querySelectorAll('a[href^="#"]').forEach(link=>{
+  link.addEventListener("click",e=>{
+    const id=link.getAttribute("href");
+    if(!id||id==="#")return;
+    const target=document.querySelector(id);
+    if(!target)return;
+    e.preventDefault();
+    const y=target.getBoundingClientRect().top+window.scrollY-88;
+    window.scrollTo({top:y,behavior:"smooth"});
+  });
+});
+
+/* Subtle pointer glow for desktop */
+if(matchMedia("(pointer:fine)").matches){
+  const glow=document.createElement("div");
+  glow.id="pointer-glow";
+  glow.style.cssText="position:fixed;left:0;top:0;width:280px;height:280px;border-radius:50%;pointer-events:none;z-index:9997;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(0,229,255,.075),rgba(50,117,255,.025) 35%,transparent 70%);mix-blend-mode:screen;transition:opacity .3s ease;opacity:0";
+  document.body.appendChild(glow);
+  let raf=0,x=0,y=0;
+  window.addEventListener("pointermove",e=>{
+    x=e.clientX;y=e.clientY;glow.style.opacity="1";
+    if(!raf) raf=requestAnimationFrame(()=>{glow.style.left=x+"px";glow.style.top=y+"px";raf=0});
+  },{passive:true});
+  window.addEventListener("pointerleave",()=>glow.style.opacity="0");
+}
+
+/* 3D tilt for elements carrying data-tilt */
+document.querySelectorAll("[data-tilt]").forEach(card=>{
+  card.addEventListener("pointermove",e=>{
+    const r=card.getBoundingClientRect(),px=(e.clientX-r.left)/r.width-.5,py=(e.clientY-r.top)/r.height-.5;
+    card.style.transform=`perspective(900px) rotateX(${(-py*5).toFixed(2)}deg) rotateY(${(px*7).toFixed(2)}deg) translateY(-4px)`;
+  });
+  card.addEventListener("pointerleave",()=>card.style.transform="");
+});
+
+
+const loader=document.getElementById("site-loader");
+const progress=document.getElementById("loader-progress");
+const percent=document.getElementById("loader-percent");
+const status=document.getElementById("loader-status");
+const loadStart=performance.now();
+const loadDuration=850;
+let domReady=document.readyState!=="loading";
+document.addEventListener("DOMContentLoaded",()=>domReady=true,{once:true});
+const stages=[
+  [0,"Initializing digital experience"],
+  [20,"Preparing interface systems"],
+  [42,"Loading 3D environment"],
+  [64,"Building visual layers"],
+  [82,"Optimizing responsive layout"],
+  [94,"Finalizing experience"],
+  [100,"Welcome to BCF SHAMIM"]
+];
+function updateLoader(p){
+  p=Math.max(0,Math.min(100,p));
+  progress.style.width=p+"%";
+  percent.textContent=Math.round(p)+"%";
+  let label=stages[0][1];
+  for(const stage of stages) if(p>=stage[0]) label=stage[1];
+  status.textContent=label;
+}
+function finishLoader(){
+  updateLoader(100);
+  document.documentElement.classList.remove("is-loading");
+  setTimeout(()=>loader.classList.add("done"),120);
+  setTimeout(()=>{loader.remove();document.body.classList.add("site-ready")},1050);
+}
+function runLoader(now){
+  const elapsed=now-loadStart;
+  const p=Math.min(100,(elapsed/loadDuration)*100);
+  updateLoader(p);
+  if(elapsed<loadDuration) requestAnimationFrame(runLoader);
+  else finishLoader();
+}
+requestAnimationFrame(runLoader);
+
+const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show")}),{threshold:.12});
+document.querySelectorAll(".reveal").forEach(x=>io.observe(x));
+
+const menu=document.querySelector(".menu"),links=document.querySelector(".navlinks");
+menu.onclick=()=>{
+ const open=links.style.display==="flex";
+ links.style.display=open?"none":"flex";
+ if(!open) Object.assign(links.style,{position:"absolute",top:"76px",left:"0",right:"0",padding:"22px",flexDirection:"column",background:"rgba(2,5,10,.98)",borderBottom:"1px solid rgba(255,255,255,.08)"});
+};
+links.querySelectorAll("a").forEach(a=>a.onclick=()=>{if(innerWidth<=950)links.style.display="none"});
+
+const stage=document.querySelector("#stage"),card=document.querySelector("#card");
+if(matchMedia("(pointer:fine)").matches && !matchMedia("(prefers-reduced-motion: reduce)").matches){
+ stage.addEventListener("pointermove",e=>{
+  const r=stage.getBoundingClientRect(),x=e.clientX/r.width-.5,y=e.clientY/r.height-.5;
+  card.style.transform=`rotateY(${x*13}deg) rotateX(${-y*10}deg)`;
+ });
+ stage.addEventListener("pointerleave",()=>card.style.transform="rotateY(0deg) rotateX(0deg)");
+}
+</script>
+</body>
+</html>
